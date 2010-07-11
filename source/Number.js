@@ -1,26 +1,34 @@
-dofile("Object.lua")
+require("Object")
 
-Number = Object:clone()
+Number = Proto.clone().newSlots({
+	protoType: "Number",
+	value: 0
+}).setSlots({
 
-function Number:with(v)
-	local o = self:clone()
-	o.value = v
-	return o
-end
+	with: functon(v)
+	{
+		local o = this:clone()
+		o.value = v
+		return o
+	},
 	
-function Number:add(v)
-	return Number:with(self.value + v.value)
-end
+	add: functon(v)
+	{
+		return Number:with(this.value + v.value)
+	},
 
-function Number:increment()
-	return Number:with(self.value + 1)
-end
+	increment: functon()
+	{
+		return Number:with(this.value + 1)
+	},
 
-function Number:print()
-	print(self.value)
-end
+	print: functon()
+	{
+		print(this.value)
+	}
+});
 
---n1 = Number:with(1)
---n2 = Number:with(2)
---n1:add(n2):print()
+//n1 = Number:with(1)
+//n2 = Number:with(2)
+//n1:add(n2):print()
 

@@ -1,24 +1,25 @@
 
-False = Object:clone();
+False = Proto.clone().newSlots({
+}).setSlots({
 
-function False:ifTrue(f1, f2)
-	if(f2) then 
-		return f2() 
-	end
-	return Nil;
-end
+	ifTrue: function(f1, f2)
+	{
+		if(f2) return f2();
+			return Nil;
+	},
 
-function False:ifFalse(f1, f2)
-	if(f1) then 
+	ifFalse(f1, f2)
+	{
 		return f1() 
-	end
-	return Nil;
-end
+	},
 
-function False:isTrue()
-	return False;
-end
+	isTrue: function()
+	{
+		return False;
+	},
 
-function False:isFalse()
-	return True;
-end
+	isFalse()
+	{
+		return True;
+	}
+});

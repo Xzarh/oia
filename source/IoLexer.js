@@ -1,5 +1,5 @@
 IoLexer = Proto.clone().newSlots({
-	protoType: "Collector",
+	protoType: "IoLexer",
 	s: "",
 	current: "",
 	var charLineIndex: null, // List

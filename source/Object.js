@@ -1,41 +1,47 @@
 
-Object = {}
+IoObject = Proto.clone().newSlots({
+	
+}).setSlots({
+	
+	clone: function()
+	{
+		return this;
+	}
 
-function Object:clone()
-	local o = {}
-	setmetatable(o, self)
-	self.__index = self
-	return o
-end
+	print: function()
+	{
+		print("Object")
+		for i, v in pairs(this) do
+			print("  " .. i .. ":" .. v);
+		}
+		return this;
+	}
 
-function Object:print()
-	print("Object")
-	for i, v in pairs(self) do
-		print("  " .. i .. ":" .. v);
-	end
-	return self;
-end
+	println: function()
+	{
+		this:print()
+		print("\n")
+		return this;
+	}
 
-function Object:println()
-	self:print()
-	print("\n")
-	return self;
-end
+	updateSlot: function(name, value)
+	{
+		if (this["_" .. name]) then
+			this["_" .. name] = value;
+		else
+			print("updateSlot Error");
+		}
+		return value;
+	}
 
-function Object:updateSlot(name, value)
-	if (self["_" .. name]) then
-		self["_" .. name] = value;
-	else
-		print("updateSlot Error");
-	end
-	return value;
-end
+	newSlot: function(name, value)
+	{
+		this["_" .. name] = value;
+		return this;
+	}
 
-function Object:newSlot(name, value)
-	self["_" .. name] = value;
-	return self;
-end
-
-function Object:getSlot(name, value)
-	return self["_" .. name];
-end
+	getSlot: function(name, value)
+	{
+		return this["_" .. name];
+	}
+});

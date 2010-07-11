@@ -1,5 +1,5 @@
 
-dofile("Object.lua")
-dofile("Nil.lua")
-dofile("True.lua")
-dofile("False.lua")
+require("Object")
+require("Nil")
+require("True")
+require("False")
