@@ -1,2 +1,0 @@
-
-Nil = Object:clone();
