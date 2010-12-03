@@ -1,3 +1,10 @@
+DESCRIPTION
+
 A port of the Io programming language to Javascript.
+
+
+STATUS
+
+Work in progress. Got a basic interpreter running but decided to move to a Continuation based implementation. In the middle of the conversion.
 
 
