@@ -1,3 +1,4 @@
+// this probably won't be used - will be replaced with Continuation
 
 IoThread = IoObject.clone().newSlots({
 	protoType: "IoThread",
