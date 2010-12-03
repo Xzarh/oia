@@ -18,6 +18,7 @@ IoScheduler = IoObject.clone().newSlots({
 	step: function()
 	{
 		var c = this.removeFirst();
+		
 		if (c)
 		{
 			c.continue();

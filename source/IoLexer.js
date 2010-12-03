@@ -70,14 +70,24 @@ IoLexer = Proto.clone().newSlots({
 	readCharMatching: function(f, name)
 	{
 		var i = this._pos;
-		if(this.currentChar() != null && f(this.currentChar())) { this._pos ++; }
+		
+		if(this.currentChar() != null && f(this.currentChar())) 
+		{ 
+			this._pos ++; 
+		}
+		
 		this.grabFrom(i, name);		
 	},
 	
 	readCharSeqMatching: function(f, name)
 	{
 		var i = this._pos;
-		while(this.currentChar() != null && f(this.currentChar())) { this._pos ++; }
+		
+		while(this.currentChar() != null && f(this.currentChar())) 
+		{ 
+			this._pos ++; 
+		}
+		
 		this.grabFrom(i, name);		
 	},
 		

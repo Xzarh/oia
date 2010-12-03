@@ -60,7 +60,10 @@ IoObject = Proto.clone().newSlots({
 	
 	lookup: function(k)
 	{
-		if(this._didLookup) return null;
+		if(this._didLookup) 
+		{
+			return null;
+		}
 		
 		var v = this.get(k);
 		
@@ -71,11 +74,14 @@ IoObject = Proto.clone().newSlots({
 		
 		this._didLookup = true;
 		var r;
-		for (var i = 0; i < this._protos.length; i ++)
+		var plen = this._protos.length;
+		
+		for (var i = 0; i < plen; i ++)
 		{
 			r = this._protos[i].lookup(k);
 			if (r) break;
 		}
+		
 		this._didLookup = false;
 		return r;
 	},
@@ -89,11 +95,17 @@ IoObject = Proto.clone().newSlots({
 	perf: function(m, locals)
 	{
 		var loc = this.lookup(m._name);
-		if(loc == null) loc = this.lookup("forward");
+		
+		if(loc == null) 
+		{
+			loc = this.lookup("forward");
+		}
+		
 		if(loc == null)
 		{
 			throw new Error(this._protoType + " missing slot '" + m._name + "' and no forward slot found");
 		}
+		
 		//writeln(this.asString(), " perf ", m._name);
 		return loc._value.activate(this, locals, m);		
 	}

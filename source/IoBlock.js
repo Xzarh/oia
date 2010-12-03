@@ -15,12 +15,14 @@ IoBlock = IoObject.clone().newSlots({
 	{
 		var m = message;
 		var locals = IoObject.clone().setProtos([sender]);
+		
 		for (var i = 0; i < this._argNames.length; i ++)
 		{
 			var argName = this._argNames[i];
 			locals.set(argName, sender.perf(m._args[i], sender));
 			if (result) break;
 		}
+		
 		return scope.perf(m, locals, locals);
 	},
 	

@@ -101,7 +101,11 @@ IoMessage = IoObject.clone().newSlots({
 			while(true)
 			{
 				var m = IoMessage.clone().parse(tokens);
-				if(m) { this.args().push(m); }
+				
+				if(m) 
+				{ 
+					this.args().push(m); 
+				}
 				
 				if(tokens.first().tokenType == "comma")
 				{
@@ -131,11 +135,17 @@ IoMessage = IoObject.clone().newSlots({
 	asString: function()
 	{
 		var s = this.name();
+		
 		if(this.args().size() > 0)
 		{
 			s = s + "(" + this.args().map(function(a) { return a.asString(); }).join(", ") + ")";
 		}
-		if(this.next()) s = s + " " + this.next().asString();
+		
+		if(this.next()) 
+		{
+			s = s + " " + this.next().asString();
+		}
+		
 		return s;
 	},
 	
@@ -183,6 +193,7 @@ IoMessage = IoObject.clone().newSlots({
 			else
 			{
 				var slot = c.value.lookup(this._name);
+				
 				if (slot._isValue) 
 				{
 					c.value = slot.activationValue();

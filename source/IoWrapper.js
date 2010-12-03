@@ -19,7 +19,11 @@ IoWrapper= IoObject.clone().newSlots({
 	
 	wrap: function(v)
 	{
-		if(v._value == null) return IoWrapper.clone().setValue(v);		
+		if(v._value == null) 
+		{
+			return IoWrapper.clone().setValue(v);		
+		}
+		
 		return v;
 	},
 	
@@ -63,6 +67,7 @@ IoWrapper= IoObject.clone().newSlots({
 		{
 			throw new Error(typeof(this._value) + " '" + m._name + "' method not found");
 		}
+		
 		//writeln(" this._value = ", this._value)
 		//writeln(" args = ", args)
 		var v = f.apply(this._value, args);
