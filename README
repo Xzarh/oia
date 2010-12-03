@@ -5,8 +5,12 @@ A port of the Io programming language to Javascript.
 
 STATUS
 
-Work in progress. Got a basic interpreter running but decided to move to a Continuation based implementation. In the middle of the conversion.
+Got a basic interpreter running but decided to move to a Continuation based implementation. In the middle of the conversion.
 
 NOTES
 
-The idea here is to support full Io (call by expression) semantics but removing operator precedence and as much as possible, wrapping JS base types instead of implementing all of Io's libraries.
+The plan is to support full Io call by expression semantics but remove operator precedence and as much as possible, wrapping JS base types instead of implementing all of Io's libraries. 
+
+The C implementation of Io is ~10K semicolons, this implementation should be tiny in comparison (1K-2K semicolons) as we can leverage Javascript's garbage collection and other similarities in semantics.
+
+The first version is being written with node.js as the target platform but later versions should support modern web browsers.
