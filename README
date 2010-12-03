@@ -7,4 +7,6 @@ STATUS
 
 Work in progress. Got a basic interpreter running but decided to move to a Continuation based implementation. In the middle of the conversion.
 
+NOTES
 
+The idea here is to support full Io (call by expression) semantics but removing operator precedence and as much as possible, wrapping JS base types instead of implementing all of Io's libraries.

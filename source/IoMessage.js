@@ -28,17 +28,22 @@ IoMessage = IoObject.clone().newSlots({
 	parse: function(tokens)
 	{
 		//writeln("IoMessage parse ", tokens.first().name);
-		while(tokens.first().tokenType == "pad") { tokens.removeFirst(); }
+		while(tokens.first().tokenType == "pad") 
+		{ 
+			tokens.removeFirst(); 
+		}
 
 		if(tokens.first().tokenType == "quote")
 		{
 			tokens.removeFirst();
 			this._name = '';
+			
 			while (tokens.size() > 0 && tokens.first().tokenType != "quote")
 			{
 				this._name += tokens.first().name
 				tokens.removeFirst();
 			}
+			
 			tokens.removeFirst();
 			this._cachedResult = this.stringFor(this._name);
 			this._name = '"' + this._name + '"'
@@ -48,10 +53,13 @@ IoMessage = IoObject.clone().newSlots({
 		{
 			var t = tokens.removeFirst();
 			this.setName(t.name);
-			if(t.tokenType == "terminator") this.setName(";");
+			if(t.tokenType == "terminator") 
+			{
+				this.setName(";");
+			}
 			
 			// handle numbers
-			var f = parseFloat(t.name);				
+			var f = parseFloat(t.name);			
 			if(f.toString() != NaN.toString()) 
 			{
 				this._cachedResult = this.numberFor(f);			
@@ -71,7 +79,10 @@ IoMessage = IoObject.clone().newSlots({
 		}
 		*/
 
-		if (tokens.size() > 0) { this.setNext(IoMessage.clone().parse(tokens)); }
+		if (tokens.size() > 0) 
+		{ 
+			this.setNext(IoMessage.clone().parse(tokens)); 
+		}
 		
 		return this;
 	},
@@ -79,7 +90,9 @@ IoMessage = IoObject.clone().newSlots({
 	parseGroup: function(tokens)
 	{				
 		while(!tokens.isEmpty() && tokens.first().tokenType == "pad") 
-		{ tokens.removeFirst(); }
+		{ 
+			tokens.removeFirst(); 
+		}
 		
 		if(!tokens.isEmpty() && tokens.first().tokenType == "open")
 		{
