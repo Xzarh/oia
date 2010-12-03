@@ -1,9 +1,1 @@
-
-require("Oia")
-
-Person = Object:clone();
-Person:newSlot("name", "Betrand")
-Person:updateSlot("name", "Herbert")
-
-Person:print();
-
+sys = require("sys"); sys.log("NaN == NaN:" + (NaN == NaN)); sys.log("NaN != NaN:" + (NaN != NaN))
