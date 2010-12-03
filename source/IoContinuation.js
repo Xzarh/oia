@@ -8,7 +8,7 @@ IoContinuation = IoObject.clone().newSlots({
 	retValue: null,
 	previous: null,
 	next: null,
-	messagesPerRun: 100,
+	messagesPerRun: 100
 }).setSlots({
 	
 	run: function()
